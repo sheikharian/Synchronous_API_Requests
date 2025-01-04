@@ -5,7 +5,7 @@ const querystring = require("querystring");
 
 // port and tenor api key
 const port = 3000;
-const tenorApiKey = "AIzaSyCo8OF4p8H8ElINk1yYqAVhHbpj37_fz18";
+const tenorApiKey = "ENTER API KEY HERE";
 
 // create server and event handlers
 const server = http.createServer();
