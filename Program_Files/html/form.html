@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+    <!--google font links-->
+    <link href='https://fonts.googleapis.com/css?family=Aboreto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Tilt Neon' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sumana' rel='stylesheet'>
+
+    <title>Genshin Impact Characters</title>
+    <style>
+        /*CSS Styling*/
+        h1 {
+            color: #9c663a;
+        }
+        body{
+            font-size: 15px;
+            font-family: 'Tilt Neon';
+        }
+        select, button {
+            font-size: 16px;
+            font-family: 'Sumana';
+            padding: 3px;
+            padding-left: 10px;
+            padding-right: 5px;;
+            margin: 10px 0;
+        }
+        button {
+            font-family: 'Sumana', serif;
+            font-size: 16px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #f4e0d3; 
+            border: 1px solid #9c663a;
+            border-radius: 5px;
+            color: #9c663a; 
+        }
+    </style>
+    <script>
+        // creates and displays the second dropdown of character names
+        function updateMenu() {
+            var pickedNation = document.getElementById("nationSelect").value;
+            var charPickSection = document.getElementById("characterSelectContainer");
+            
+            // clears the existing dropdown
+            charPickSection.innerHTML = "";
+
+            // each nation option in main list has a specific set of character names for second list placed in an array
+            var nationCharacterListBig = {
+                "Mondstadt": ["Albedo", "Amber", "Barbara", "Bennet", "Diluc", "Diona", "Eula", "Fischl", "Jean", "Kaeya", "Klee", "Lisa", "Mika", "Mona", "Noelle", "Razor", "Rosaria", "Sucrose", "Thoma", "Venti"],
+                "Liyue": ["Baizhu", "Beidou", "Chiori", "Chongyun",  "Gaming", "Ganyu", "Hu-tao", "Keqing", "Ningguang", "Qiqi", "Shenhe", "Xiangling", "Xianyun", "Xiao", "Xingqiu", "Xinyan", "Yanfei", "Yaoyao", "Yelan", "Yun-jin", "Zhongli"],
+                "Inazuma": ["Ayaka", "Ayato", "Arataki-itto", "Gorou", "Kazuha", "Kirara", "Kokomi", "Kuki-shinobu", "Raiden", "Sara", "Sayu", "Yae-miko", "Yoimiya"],
+                "Sumeru": ["Alhaitham", "Candace", "Collei", "Cyno", "Dehya", "Dori", "Faruzan", "Kaveh", "Layla", "Nahida", "Sethos", "Tighnari", "Wanderer"],
+                "Fontaine": ["Charlotte", "Chevreuse", "Clorinde", "Emilie", "Freminet", "Furina", "Lynette", "Lyney", "Navia", "Neuvillette", "Sigewinne", "Wriothesley"],
+                "Natlan": ["Kachina", "Kinich", "Mualani"],
+                "Snezhnaya": ["Arlecchino", "Tartaglia"]
+            };
+
+            // creates a new menu for character names based off of first menu choice
+            if (pickedNation && nationCharacterListBig[pickedNation]) {
+                var secondMenu = document.createElement("label");
+                secondMenu.for = "characterMenu";
+                secondMenu.textContent = "Choose a Character from that Nation:";
+
+                var select = document.createElement("select");
+                select.id = "characterMenu";
+                select.name = "characterMenu";
+
+                // add options to the new dropdown
+                nationCharacterListBig[pickedNation].forEach(function(item) {
+                    // create option var with 
+                    var option = document.createElement("option");
+                    option.value = item;
+                    option.textContent = item;
+                    select.appendChild(option);
+                });
+                // append the label and dropdown to the character container, with breaks inbetween
+                charPickSection.appendChild(secondMenu);
+                charPickSection.appendChild(document.createElement("br"));
+                charPickSection.appendChild(select);
+                charPickSection.appendChild(document.createElement("br"));
+
+                // gif number limit creation
+                var numberLabel = document.createElement("label");
+                numberLabel.for = "gifLimit";
+                numberLabel.textContent = "How many GIFs? ( 1-15 ):";
+                // gif input name, minimum, maximum limits and default value
+                var gifNumberInput = document.createElement("input");
+                gifNumberInput.type = "number";
+                gifNumberInput.id = "gifLimit";
+                gifNumberInput.name = "gifLimit";
+                gifNumberInput.min = "1";
+                gifNumberInput.max = "15";
+                gifNumberInput.value = "5";
+                // append gif limit input to second dropdown div, with breaks inbetween for spacing
+                charPickSection.appendChild(numberLabel);
+                charPickSection.appendChild(document.createElement("br"));
+                charPickSection.appendChild(gifNumberInput);
+                charPickSection.appendChild(document.createElement("br"));
+
+                // submit button creation, lastly appends button to char selection dropdown div
+                var submitButt = document.createElement("button");
+                submitButt.type = "submit";
+                submitButt.textContent = "Submit";
+                charPickSection.appendChild(submitButt);
+            }
+        }
+    </script>
+</head>
+
+<body style="background-color: #d6ebff">
+    <h1 style="font-family: 'Aboreto';">Genshin Characters</h1>
+    <!--nation dropdown list-->
+    <form action="select" method="post">
+        <label for="nationSelect">Choose a Nation:</label>
+        <!--on selecting option, updates and displays second menu and submit button-->
+        <select id="nationSelect" name="nationSelect" onchange="updateMenu()" required>
+            <!--nations and values, first option has no value-->
+            <option value="">--Select a Nation--</option>
+            <option value="Mondstadt">Mondstadt</option>
+            <option value="Liyue">Liyue</option>
+            <option value="Inazuma">Inazuma</option>
+            <option value="Sumeru">Sumeru</option>
+            <option value="Fontaine">Fontaine</option>
+            <option value="Natlan">Natlan</option>
+            <option value="Snezhnaya">Snezhnaya</option>
+        </select>
+        <!--breaks for spacing-->
+        <br><br>
+        <!--empty div for char dropdown, gif limit input, and submit button-->
+        <div id="characterSelectContainer">
+        </div>
+    </form>
+</body>
+</html>
