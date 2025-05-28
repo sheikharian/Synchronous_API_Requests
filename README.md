@@ -4,15 +4,15 @@
 
 **genshindevAPI** : https://github.com/genshindev/api
 
-_No AUTH_
+_No AUTH Required_
 
-Gathers character data from assets/data/characters endpoint
+Retrieves character data from the assets/data/characters endpoint
 
 **tenorAPI** : https://tenor.com/gifapi/documentation
 
 _AUTH Key Required (NONE PROVIDED)_
 
-Gathers GIF data from v2/search/ endpoint
+Retrieves GIF data from the v2/search/ endpoint
 
 ## Node.js functions used:
 fs, http, https, querystring
