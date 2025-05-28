@@ -1,4 +1,4 @@
-# JavaScript_2_API
+# Synchronous_API_Requests
 
 ## APIs used:
 
